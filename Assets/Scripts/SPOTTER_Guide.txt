@@ -1,0 +1,40 @@
+tree("Root")
+	fallback
+		sequence
+			fallback
+				DetectPlayer
+				AwareOfPlayer
+			tree("Chase")
+		tree("Supervise")
+
+
+
+tree("Chase")
+	sequence
+		ChasePlayer
+		fallback
+			SeePlayer
+			while
+				not SeePlayer
+				sequence
+					BlindChase
+					sequence
+						Wait 5.0
+						ForgetPlayer
+					repeat
+						sequence
+							Wait 5.0
+							fallback
+								Origin	
+								
+tree("Supervise")
+	fallback
+		DetectPlayer
+		sequence
+			Wait 8.0
+			Turn
+				
+
+
+	
+

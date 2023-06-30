@@ -1,0 +1,37 @@
+tree("Root")
+	fallback
+		sequence
+			fallback
+				DetectPlayer
+				AwareOfPlayer
+			tree("Chase")
+		tree("Patrol")
+
+
+
+tree("Chase")
+	sequence
+		ChasePlayer
+		fallback
+			SeePlayer
+			while
+				not SeePlayer
+				sequence
+					BlindChase
+					sequence
+						Wait 5.0
+						ForgetPlayer
+					repeat
+						sequence
+							Wait 3.0
+							fallback
+								Patrol										
+
+
+
+tree("Patrol")
+	sequence
+		fallback
+			Patrol
+			Wait 5.0
+
